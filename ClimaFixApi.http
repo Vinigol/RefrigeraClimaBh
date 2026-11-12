@@ -1,0 +1,6 @@
+@ClimaFixApi_HostAddress = http://localhost:5016
+
+GET {{ClimaFixApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
