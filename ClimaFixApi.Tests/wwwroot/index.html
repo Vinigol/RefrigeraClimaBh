@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaFix - Gestão de Equipamentos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
+        h1 { color: #0056b3; }
+        .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #0056b3; color: white; }
+        button { padding: 8px 12px; background-color: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #004085; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel Girassol - ClimaFix</h1>
+        <p>Listagem assíncrona de equipamentos consumindo a API REST.</p>
+        
+        <button onclick="carregarEquipamentos()">Atualizar Lista</button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Equipamento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            ​</thead>
+            <tbody id="tabela-equipamentos">
+                <!-- Os dados serão injetados assincronamente aqui via JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="site.js"></script>
+</body>
+</html>
