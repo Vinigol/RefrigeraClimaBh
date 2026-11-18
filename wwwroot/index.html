@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaFix - Gestão de Equipamentos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
+        h1, h2 { color: #0056b3; }
+        .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 900px; margin: auto; }
+        nav { margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #0056b3; color: white; }
+        button { padding: 8px 14px; background-color: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px; }
+        button:hover { background-color: #004085; }
+        button.secondary { background-color: #6c757d; }
+        button.secondary:hover { background-color: #545b62; }
+        .view { display: none; }
+        .view.active { display: block; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        .detail-card { background: #f8f9fa; padding: 15px; border-left: 4px solid #0056b3; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ClimaFix - Gestão de Climatização</h1>
+        
+        <nav>
+            <button onclick="mostrarVisao('view-lista')">Lista de Equipamentos</button>
+            <button onclick="mostrarVisao('view-cadastro')">+ Novo Equipamento</button>
+        </nav>
+
+        <!-- VISÃO 1: LISTAGEM -->
+        <section id="view-lista" class="view active">
+            <h2>Equipamentos Cadastrados</h2>
+            <button class="secondary" onclick="carregarEquipamentos()">Atualizar Lista</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Modelo / Tipo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-equipamentos"></tbody>
+            </table>
+        </section>
+
+        <!-- VISÃO 2: DETALHES DO ITEM -->
+        <section id="view-detalhes" class="view">
+            <h2>Detalhes do Equipamento</h2>
+            <div id="conteudo-detalhes" class="detail-card"></div>
+            <button class="secondary" onclick="mostrarVisao('view-lista')">Voltar para Lista</button>
+        </section>
+
+        <!-- VISÃO 3: FORMULÁRIO DE CADASTRO -->
+        <section id="view-cadastro" class="view">
+            <h2>Cadastrar Novo Equipamento</h2>
+            <form id="form-equipamento" onsubmit="salvarEquipamento(event)">
+                <div class="form-group">
+                    <label for="nome">Nome do Equipamento:</label>
+                    <input type="text" id="nome" required placeholder="Ex: Split Inverter 12000 BTUs">
+                </div>
+                <div class="form-group">
+                    <label for="modelo">Modelo / Marca:</label>
+                    <input type="text" id="modelo" required placeholder="Ex: Midea Xtreme Save">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Em Manutenção">Em Manutenção</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+                </div>
+                <button type="submit">Salvar Equipamento</button>
+                <button type="button" class="secondary" onclick="mostrarVisao('view-lista')">Cancelar</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="site.js"></script>
+</body>
+</html>
